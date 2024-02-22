@@ -4,5 +4,5 @@ This project was developed using VS code
 
 To run:
 Install Node.js
-In project folder, run: npm install
+In vue-composition-api-noteballs folder, run: npm install
 After npm install, run: npm run dev
