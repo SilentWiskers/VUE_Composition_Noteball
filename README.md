@@ -1,4 +1,4 @@
-# VUE_Noteball_Project
+# VUE_Composition_Noteball
 My Noteball project learned from Udemy using Vue3
 This project was developed using VS code
 
