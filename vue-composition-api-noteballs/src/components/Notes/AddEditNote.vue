@@ -5,7 +5,7 @@
 
         <div class="field">
             <div class="control">
-                <textarea :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" class="textarea" :placeholder="placeholder" ref="textAreaRef"></textarea>
+                <textarea :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" class="textarea" maxlength="100" :placeholder="placeholder" ref="textAreaRef" v-autofocus></textarea>
             </div>
         </div>
 
@@ -24,7 +24,8 @@
 //Imports
 
     import { ref } from 'vue'
-
+    import { vAutofocus } from '@/directives/vAutofocus'
+ 
 
 //Variables
 

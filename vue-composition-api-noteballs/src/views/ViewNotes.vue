@@ -18,26 +18,32 @@
 
 <script setup>
 //Imports
-import { ref } from 'vue'
-import { useStoreNotes } from '@/stores/storeNotes.js'
-import AddEditNote from '@/components/Notes/AddEditNote.vue'
-import Notes from '@/components/Notes/NoteCard.vue'
+    import { ref } from 'vue'
+    import { useStoreNotes } from '@/stores/storeNotes.js'
+    import { useWatchCharacters } from '@/use/useWatchCharacters'
+    import AddEditNote from '@/components/Notes/AddEditNote.vue'
+    import Notes from '@/components/Notes/NoteCard.vue'
 
 //Notes
-const storeNotes = useStoreNotes()
+    const storeNotes = useStoreNotes()
 
-const newNote = ref('')
-const addEditNoteRef = ref(null)
+    const newNote = ref('')
+    const addEditNoteRef = ref(null)
 
 
-const addNote = () => {
+    const addNote = () => {
 
-    storeNotes.addNote(newNote.value)
+        storeNotes.addNote(newNote.value)
 
-    newNote.value = ''
+        newNote.value = ''
 
-    addEditNoteRef.value.focusTextarea()
+        addEditNoteRef.value.focusTextarea()
 
 }
+
+//Watch Characters
+
+    useWatchCharacters(newNote, 100)
+
  
 </script>

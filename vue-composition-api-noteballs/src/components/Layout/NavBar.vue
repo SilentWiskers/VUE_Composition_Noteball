@@ -7,14 +7,14 @@
                     Noteballs
                 </div>
 
-                <a @click.prevent="showMobileNav = !showMobileNav" role="button" class="navbar-burger" :class="{'is-active' : showMobileNav}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <a @click.prevent="showMobileNav = !showMobileNav" ref="navbarBurgerRef" role="button" class="navbar-burger" :class="{'is-active' : showMobileNav}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div id="navbarBasicExample" class="navbar-menu" :class="{'is-active' : showMobileNav}">
+            <div id="navbarBasicExample" class="navbar-menu" :class="{'is-active' : showMobileNav}" ref="navbarMenuRef">
                 <div class="navbar-end">
                     <RouterLink @click="showMobileNav = false" to="/" class="navbar-item" active-class="is-active">
                         Notes
@@ -35,9 +35,21 @@
 <script setup>
 //Imports
 import { ref } from 'vue'
-
+import { onClickOutside } from '@vueuse/core'
+ 
 //Mobile Nav
 const showMobileNav = ref(false)
+
+//Click outside close
+
+    const navbarMenuRef = ref(null)
+    const navbarBurgerRef = ref(null)
+
+    onClickOutside(navbarMenuRef, () => {
+        showMobileNav.value = false
+    }, {
+        ignore: [navbarBurgerRef]
+    })
 
 </script>
 
